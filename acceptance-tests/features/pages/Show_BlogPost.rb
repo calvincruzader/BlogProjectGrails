@@ -1,3 +1,5 @@
+require 'page-object'
+
 class Show_BlogPost
   include PageObject
 

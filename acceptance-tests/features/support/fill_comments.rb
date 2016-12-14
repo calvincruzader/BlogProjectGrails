@@ -1,4 +1,4 @@
-def fill_comments_with_other_readers(page)
+def fill_comments_with_other_readers
   on_page Show_BlogPost do |page|
     page.logout
   end

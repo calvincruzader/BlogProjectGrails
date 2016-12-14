@@ -1,3 +1,5 @@
+require 'page-object'
+
 class Login
   include PageObject
 

@@ -1,3 +1,5 @@
+require 'BetterLorem'
+
 Given(/^I am logged in as a blogger$/) do
   visit_page Blog_Home
   on_page Blog_Home do |page|
@@ -9,7 +11,6 @@ Given(/^I am logged in as a blogger$/) do
     page.password = "password"
     page.login
   end
-  sleep 2
 end
 
 When(/^I publish a new blog post$/) do
@@ -19,10 +20,7 @@ When(/^I publish a new blog post$/) do
   end
   sleep 2
   on_page Create_BlogPost do |page|
-    @blog_title = BetterLorem.w(10, true, true).gsub(/[^[a-zA-Z0-9]+]/, ' ').gsub(/\s+/, ' ')
-    page.title = @blog_title
-    page.blog_body = BetterLorem.p(10, true, false).gsub(/[^[a-zA-Z0-9]+]/, ' ').gsub(/\s+/, ' ')
-    page.create_blogpost
+    publish_new_blog_post(page)
     sleep 2
   end
 end
@@ -32,7 +30,6 @@ Then(/^I am notified that the blog post was successfully added$/) do
 
     expect(page.blogpost_notification).to include("created")
     page.home_page
-    sleep 2
   end
 end
 
@@ -40,4 +37,11 @@ Then(/^the newly added blog post is at the top of the recent posts list$/) do
   on_page Blog_Home do |page|
     expect(page.first_blogpost).to include(@blog_title)
   end
+end
+
+def publish_new_blog_post(page)
+  @blog_title = BetterLorem.w(10, true, true).gsub(/[^[a-zA-Z0-9]+]/, ' ').gsub(/\s+/, ' ')
+  page.title = @blog_title
+  page.blog_body = BetterLorem.p(10, true, false).gsub(/[^[a-zA-Z0-9]+]/, ' ').gsub(/\s+/, ' ')
+  page.create_blogpost
 end

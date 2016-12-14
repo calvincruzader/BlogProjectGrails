@@ -10,25 +10,27 @@ ul {
   padding-bottom: 20px;
 }
 
-.createBtn {
-  margin-left: 30%;
+.createBlogPost {
+  margin-left: 1%;
 }
 
 .blogHomeTitle {
   letter-spacing: .1em;
   font-family: Courier New;
   font-size: 50px;
-  margin-top: 20px;
-  margin-left: 50px;
+  margin-bottom: 10px;
 }
 
+.billboardVid {
+  margin-left: 21%;
+}
 
 .commentAndCancelBtns {
     margin: 0px 0px 0px 965px;
 }
 
 .blogTitle {
-  font-size: 24px
+  font-size: 30px
 
 }
 
@@ -40,6 +42,11 @@ ul {
 .myNavBarHeader {
   margin: 0px 0px 3px 0px;
   padding: 13px;
+}
+
+.billboard {
+  width: 100%;
+
 }
 
 .titleAndNewPostBtn {
@@ -104,13 +111,9 @@ fieldset {
   height: 50px;
   width: 150px;
   text-align: center;
-  padding-top: 8px;
-  font-size: 20px;
-  margin-left: 55.8%;
-}
 
-.myPagi {
-  margin-top: 37%;
+  font-size: 20px;
+
 }
 
 .noPosts {

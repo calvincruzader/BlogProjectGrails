@@ -1,3 +1,5 @@
+require 'page-object'
+
 class Create_BlogPost
   include PageObject
 

@@ -1,7 +1,7 @@
 Then(/^I should see comments left by other readers$/) do
   ##preprocessing##
   on_page Show_BlogPost do |page|
-    fill_comments_with_other_readers(page)
+    fill_comments_with_other_readers
   end
   sleep 2
   on_page Blog_Home do |page|

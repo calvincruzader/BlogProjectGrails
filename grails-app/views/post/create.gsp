@@ -41,12 +41,10 @@
               <g:hiddenField name="dateCreated" value="'${new Date()}'"/>
 				      </div>
             </fieldset>
-          <br>
-            <fieldset class="buttons btn-toolbar">
-              <g:submitButton name="create" class="btn btn-default createBtn" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-            </fieldset>
+            <br>
+            <g:submitButton name="create" class="btn btn-default createBlogPost" value="${message(code: 'default.button.create.label', default: 'Create')}" />
           </g:form>
-        </div> 
+        </div>
         <script>
         $(function() {
           $('.blogBody').autosize();

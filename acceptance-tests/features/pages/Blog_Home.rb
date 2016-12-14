@@ -1,3 +1,5 @@
+require 'page-object'
+
 class Blog_Home
   include PageObject
 

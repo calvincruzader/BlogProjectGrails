@@ -1,3 +1,5 @@
+require 'BetterLorem'
+
 Given(/^my favorite blogger has been very active$/) do
   visit_page Blog_Home
   on_page Blog_Home do |page|
@@ -9,27 +11,11 @@ Given(/^my favorite blogger has been very active$/) do
     page.password = "password"
     page.login
   end
-  sleep 2
   on_page Blog_Home do |page|
     page.goto_create_post
   end
 
-##populate blog because blogger is very active
-  for i in 1..10
-    on_page Create_BlogPost do |page|
-      page.title = BetterLorem.w(10, true, true).gsub(/[^[a-zA-Z0-9]+]/, ' ').gsub(/\s+/, ' ')
-      page.blog_body = BetterLorem.p(10, true, false).gsub(/[^[a-zA-Z0-9]+]/, ' ').gsub(/\s+/, ' ')
-      page.create_blogpost
-    end
-    on_page Show_BlogPost do |page|
-      
-      page.goto_create_post
-    end
-  end
-  on_page Show_BlogPost do |page|
-    page.logout
-  end
-###populate comments
+  blogger_populates_blog
 sleep 2
 end
 
@@ -62,5 +48,22 @@ Then(/^I should see posts with that value in the title$/) do
     page.blog_posts_search_results_elements.each do |post_title|
       expect(post_title.text.downcase).to include(@search_query.downcase)
     end
+  end
+end
+
+def blogger_populates_blog
+  for i in 1..10
+    on_page Create_BlogPost do |page|
+      page.title = BetterLorem.w(10, true, true).gsub(/[^[a-zA-Z0-9]+]/, ' ').gsub(/\s+/, ' ')
+      page.blog_body = BetterLorem.p(10, true, false).gsub(/[^[a-zA-Z0-9]+]/, ' ').gsub(/\s+/, ' ')
+      page.create_blogpost
+    end
+    on_page Show_BlogPost do |page|
+
+      page.goto_create_post
+    end
+  end
+  on_page Show_BlogPost do |page|
+    page.logout
   end
 end

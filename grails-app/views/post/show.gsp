@@ -13,9 +13,9 @@
               <div class="col-xs-12 container">
                 <li><a class="btn btn-default homeBtn" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
                 <li><g:link class="btn btn-default indexBtn" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                <span ><sec:ifAnyGranted roles='ROLE_ADMIN'>
+                <sec:ifAnyGranted roles='ROLE_ADMIN'>
                   <li><g:link class="btn btn-default createBtn" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-                </sec:ifAnyGranted></span>
+                </sec:ifAnyGranted>
               </div>
             </ul>
 
